@@ -59,14 +59,14 @@ int main()
     if (escolhaModo == 1)
     { // jogo 2x2   (vermelho vs Amarelo)
 
-        if (jogo2x2[0].percurso[0][0] == 0 || jogo2x2[0].percurso[0][0] == 0 || jogo2x2[0].percurso[1][0] == 0 || jogo2x2[0].percurso[2][0] == 0 || jogo2x2[0].percurso[3][0] == 0 || jogo2x2[1].percurso[0][1] == 0 || jogo2x2[1].percurso[1][1] == 0 || jogo2x2[1].percurso[2][1] == 0 || jogo2x2[1].percurso[3][1] == 0) // ---peao esta na origem
+        if ((jogo2x2[0].percurso[0][0] == 0 || jogo2x2[0].percurso[1][0] == 0 || jogo2x2[0].percurso[2][0] == 0 || jogo2x2[0].percurso[3][0] == 0) || (jogo2x2[1].percurso[0][1] == 0 || jogo2x2[1].percurso[1][1] == 0 || jogo2x2[1].percurso[2][1] == 0 || jogo2x2[1].percurso[3][1] == 0)) // ---peao esta na origem
         {
             inicio2x2(jogo2x2, 2, &inicio);
 
             printf("peao esta na origem!!\n");
         } //------------------------------------Fim peao esta na origem
 
-        if (jogo2x2[0].percurso[0][0] > 0 || jogo2x2[0].percurso[0][0] > 0 || jogo2x2[0].percurso[1][0] > 0 || jogo2x2[0].percurso[2][0] > 0 || jogo2x2[0].percurso[3][0] > 0 || jogo2x2[1].percurso[0][1] > 0 || jogo2x2[1].percurso[1][1] > 0 || jogo2x2[1].percurso[2][1] > 0 || jogo2x2[1].percurso[3][1] > 0) // ---peao saiu da origem
+        if ((jogo2x2[0].percurso[0][0] > 0 || jogo2x2[0].percurso[1][0] > 0 || jogo2x2[0].percurso[2][0] > 0 || jogo2x2[0].percurso[3][0] > 0) || (jogo2x2[1].percurso[0][1] > 0 || jogo2x2[1].percurso[1][1] > 0 || jogo2x2[1].percurso[2][1] > 0 || jogo2x2[1].percurso[3][1] > 0)) // ---peao saiu da origem
         {
 
             meioDeJogo2x2(jogo2x2, 2, &inicio);
@@ -87,7 +87,7 @@ int main()
 int quemComeca2x2() // retorna 1 ou 2, se for 1 jogador1 cmç se 2 jogador2 cmç
 {
     int comeca;
-    srand(time(NULL));
+
     comeca = rand() % 2 + 1;
     return comeca;
 }
@@ -95,15 +95,15 @@ int quemComeca2x2() // retorna 1 ou 2, se for 1 jogador1 cmç se 2 jogador2 cmç
 int girarDado() // gera um numero aleatorio de 1 a 6
 {
     int dado;
-    srand(time(NULL));
+
     dado = rand() % 6 + 1;
     return dado;
 }
 
 void inicio2x2(jogo *jogo2x2, int a, int *inicio)
 {
-    srand(time(NULL));
-    while (jogo2x2[0].percurso[0][0] != 1 || jogo2x2[0].percurso[1][0] != 1 || jogo2x2[0].percurso[2][0] != 1 || jogo2x2[0].percurso[3][0] != 1 || jogo2x2[1].percurso[0][0] != 1 || jogo2x2[1].percurso[1][0] != 1 || jogo2x2[1].percurso[2][0] != 1 || jogo2x2[1].percurso[3][0] != 1)
+
+    while (jogo2x2[0].percurso[0][0] < 1 && jogo2x2[0].percurso[1][0] < 1 && jogo2x2[0].percurso[2][0] < 1 && jogo2x2[0].percurso[3][0] < 1 && jogo2x2[1].percurso[0][0] < 1 && jogo2x2[1].percurso[1][0] < 1 && jogo2x2[1].percurso[2][0] < 1 && jogo2x2[1].percurso[3][0] < 1)
     { // inicio do loop
 
         if (*inicio == 1)
@@ -144,6 +144,7 @@ void inicio2x2(jogo *jogo2x2, int a, int *inicio)
                         printf("\nDado1:\n");
 
                         escolhaPeaoVermelhoDado1(jogo2x2, 2, &inicio);
+                        *inicio = 2;
                     }
                 }
 
@@ -160,6 +161,7 @@ void inicio2x2(jogo *jogo2x2, int a, int *inicio)
                     } // Fiim origem dos peao recebe 1
 
                     escolhaPeaoVermelhoDado2(jogo2x2, 2, &inicio);
+                    *inicio = 2;
                 }
             }
             else
@@ -167,6 +169,7 @@ void inicio2x2(jogo *jogo2x2, int a, int *inicio)
                 printf("Passou a vez!\n");
                 *inicio = 2; // passa a vez
             }
+            *inicio = 2;
         }
 
         if (*inicio == 2)
@@ -205,6 +208,7 @@ void inicio2x2(jogo *jogo2x2, int a, int *inicio)
                         printf("\nDado3 !=6 \n");
 
                         escolhaPeaoAmareloDado1(jogo2x2, 2, &inicio);
+                        *inicio = 1;
                     }
                 }
 
@@ -219,9 +223,10 @@ void inicio2x2(jogo *jogo2x2, int a, int *inicio)
                             jogo2x2[x].percurso[y][0] = 1;
                         }
                     } // Fiim origem dos peao recebe 1
-                    printf("\nDado2 !=6 \n");
+                    printf("\nDado-1\n");
 
                     escolhaPeaoAmareloDado2(jogo2x2, 2, &inicio);
+                    *inicio = 1;
                 }
             }
             else
@@ -229,6 +234,7 @@ void inicio2x2(jogo *jogo2x2, int a, int *inicio)
                 printf("Passou a vez!\n");
                 *inicio = 1;
             }
+            *inicio = 1;
         }
 
     } // fim do loop
@@ -236,7 +242,7 @@ void inicio2x2(jogo *jogo2x2, int a, int *inicio)
 
 void meioDeJogo2x2(jogo *jogo2x2, int a, int *inicio)
 {
-    srand(time(NULL));
+
     if (*inicio == 1)
     {
 
@@ -266,6 +272,7 @@ void meioDeJogo2x2(jogo *jogo2x2, int a, int *inicio)
                     printf("\nDado-1: \n");
 
                     escolheDadoForaOrigem1(jogo2x2, 2, &inicio);
+                    *inicio = 2;
                 }
             }
 
@@ -274,12 +281,15 @@ void meioDeJogo2x2(jogo *jogo2x2, int a, int *inicio)
                 printf("\nDado-1: \n");
 
                 escolheDadoForaOrigem2(jogo2x2, 2, &inicio);
+                *inicio = 2;
             }
         }
         else
         {
             escolheDadoForaOrigem3(jogo2x2, 2, &inicio);
+            *inicio = 2;
         }
+        *inicio = 2;
     }
 
     if (*inicio == 2)
@@ -309,6 +319,7 @@ void meioDeJogo2x2(jogo *jogo2x2, int a, int *inicio)
                     printf("\nDado-1: \n");
 
                     escolheDadoForaOrigem1A(jogo2x2, 2, &inicio);
+                    *inicio = 1;
                 }
             }
 
@@ -317,12 +328,15 @@ void meioDeJogo2x2(jogo *jogo2x2, int a, int *inicio)
                 printf("\nDado-1: \n");
 
                 escolheDadoForaOrigem2A(jogo2x2, 2, &inicio);
+                *inicio = 1;
             }
         }
         else
         {
             escolheDadoForaOrigem3A(jogo2x2, 2, &inicio);
+            *inicio = 1;
         }
+        *inicio = 1;
     }
 }
 
@@ -342,6 +356,7 @@ void escolhaPeaoVermelhoDado1(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolhaPeaoVermelhoDado2(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 2)
@@ -352,6 +367,7 @@ void escolhaPeaoVermelhoDado1(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolhaPeaoVermelhoDado2(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 3)
@@ -362,6 +378,7 @@ void escolhaPeaoVermelhoDado1(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolhaPeaoVermelhoDado2(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 4)
@@ -372,6 +389,7 @@ void escolhaPeaoVermelhoDado1(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolhaPeaoVermelhoDado2(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 }
 
@@ -389,6 +407,7 @@ void escolhaPeaoVermelhoDado2(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 2)
@@ -399,6 +418,7 @@ void escolhaPeaoVermelhoDado2(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 3)
@@ -409,6 +429,7 @@ void escolhaPeaoVermelhoDado2(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 4)
@@ -419,6 +440,7 @@ void escolhaPeaoVermelhoDado2(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 }
 
@@ -434,6 +456,7 @@ void escolhaPeaoVermelhoDado3(jogo *jogo2x2, int a, int *inicio)
         jogo2x2[0].jogador = jogo2x2[0].dado3;
         jogo2x2[0].percurso[0][1] += jogo2x2[0].jogador;
         printf("Peao1-Vermelho esta na casa %d do percurso! \n", jogo2x2[0].percurso[0][1]);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 2)
@@ -441,6 +464,7 @@ void escolhaPeaoVermelhoDado3(jogo *jogo2x2, int a, int *inicio)
         jogo2x2[0].jogador = jogo2x2[0].dado3;
         jogo2x2[0].percurso[1][1] += jogo2x2[0].jogador;
         printf("Peao2-Vermelho esta na casa %d do percurso! \n", jogo2x2[0].percurso[1][1]);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 3)
@@ -448,6 +472,7 @@ void escolhaPeaoVermelhoDado3(jogo *jogo2x2, int a, int *inicio)
         jogo2x2[0].jogador = jogo2x2[0].dado3;
         jogo2x2[0].percurso[2][1] += jogo2x2[0].jogador;
         printf("Peao3-Vermelho esta na casa %d do percurso! \n", jogo2x2[0].percurso[2][1]);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 4)
@@ -455,6 +480,7 @@ void escolhaPeaoVermelhoDado3(jogo *jogo2x2, int a, int *inicio)
         jogo2x2[0].jogador = jogo2x2[0].dado3;
         jogo2x2[0].percurso[3][1] += jogo2x2[0].jogador;
         printf("Peao4-Vermelho esta na casa %d do percurso! \n", jogo2x2[0].percurso[3][1]);
+        *inicio = 2;
     }
 }
 
@@ -473,6 +499,7 @@ void escolheDadoForaOrigem1(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolheDadoForaOrigem2(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 2)
@@ -483,6 +510,7 @@ void escolheDadoForaOrigem1(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolheDadoForaOrigem2(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 3)
@@ -493,6 +521,7 @@ void escolheDadoForaOrigem1(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolheDadoForaOrigem2(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 4)
@@ -503,6 +532,7 @@ void escolheDadoForaOrigem1(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolheDadoForaOrigem2(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 }
 
@@ -521,6 +551,7 @@ void escolheDadoForaOrigem2(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado1: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 2)
@@ -531,6 +562,7 @@ void escolheDadoForaOrigem2(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado1: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 3)
@@ -541,6 +573,7 @@ void escolheDadoForaOrigem2(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado1: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 
     if (escolhaPeao == 4)
@@ -551,6 +584,7 @@ void escolheDadoForaOrigem2(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado1: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, 2, &inicio);
+        *inicio = 2;
     }
 }
 
@@ -614,6 +648,7 @@ void escolheDadoForaOrigem1A(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolheDadoForaOrigem2A(jogo2x2, 2, &inicio);
+        *inicio = 1;
     }
 
     if (escolhaPeao == 2)
@@ -624,6 +659,7 @@ void escolheDadoForaOrigem1A(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolheDadoForaOrigem2A(jogo2x2, 2, &inicio);
+        *inicio = 1;
     }
 
     if (escolhaPeao == 3)
@@ -634,6 +670,7 @@ void escolheDadoForaOrigem1A(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolheDadoForaOrigem2A(jogo2x2, 2, &inicio);
+        *inicio = 1;
     }
 
     if (escolhaPeao == 4)
@@ -644,6 +681,7 @@ void escolheDadoForaOrigem1A(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado2: \n");
         escolheDadoForaOrigem2A(jogo2x2, 2, &inicio);
+        *inicio = 1;
     }
 }
 
@@ -662,6 +700,7 @@ void escolheDadoForaOrigem2A(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado1: \n");
         escolheDadoForaOrigem3A(jogo2x2, 2, &inicio);
+        *inicio = 1;
     }
 
     if (escolhaPeao == 2)
@@ -672,6 +711,7 @@ void escolheDadoForaOrigem2A(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado1: \n");
         escolheDadoForaOrigem3A(jogo2x2, 2, &inicio);
+        *inicio = 1;
     }
 
     if (escolhaPeao == 3)
@@ -682,6 +722,7 @@ void escolheDadoForaOrigem2A(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado1: \n");
         escolheDadoForaOrigem3A(jogo2x2, 2, &inicio);
+        *inicio = 1;
     }
 
     if (escolhaPeao == 4)
@@ -692,6 +733,7 @@ void escolheDadoForaOrigem2A(jogo *jogo2x2, int a, int *inicio)
 
         printf("\nDado1: \n");
         escolheDadoForaOrigem3A(jogo2x2, 2, &inicio);
+        *inicio = 1;
     }
 }
 
@@ -708,7 +750,7 @@ void escolheDadoForaOrigem3A(jogo *jogo2x2, int a, int *inicio)
         jogo2x2[1].percurso[0][1] += jogo2x2[1].jogador;
         printf("Peao1-Amarelo esta na casa %d do percurso! \n", jogo2x2[1].percurso[0][1]);
 
-        *inicio = 2;
+        *inicio = 1;
     }
 
     if (escolhaPeao == 2)
@@ -717,7 +759,7 @@ void escolheDadoForaOrigem3A(jogo *jogo2x2, int a, int *inicio)
         jogo2x2[1].percurso[1][1] += jogo2x2[1].jogador;
         printf("Peao2-Amarelo esta na casa %d do percurso! \n", jogo2x2[1].percurso[1][1]);
 
-        *inicio = 2;
+        *inicio = 1;
     }
 
     if (escolhaPeao == 3)
@@ -726,7 +768,7 @@ void escolheDadoForaOrigem3A(jogo *jogo2x2, int a, int *inicio)
         jogo2x2[1].percurso[2][1] += jogo2x2[1].jogador;
         printf("Peao3-Amarelo esta na casa %d do percurso! \n", jogo2x2[1].percurso[2][1]);
 
-        *inicio = 2;
+        *inicio = 1;
     }
 
     if (escolhaPeao == 4)
@@ -735,7 +777,7 @@ void escolheDadoForaOrigem3A(jogo *jogo2x2, int a, int *inicio)
         jogo2x2[1].percurso[3][1] += jogo2x2[1].jogador;
         printf("Peao4-Amarelo esta na casa %d do percurso! \n", jogo2x2[1].percurso[3][1]);
 
-        *inicio = 2;
+        *inicio = 1;
     }
 }
 
