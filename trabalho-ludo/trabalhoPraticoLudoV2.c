@@ -336,7 +336,7 @@ int escolhaPeaoVermelhoDado1(jogo *jogo2x2, int *inicio) // colocar no V3
 
         printf("Peao1-Vermelho saiu da origem! \n");
 
-        printf("\nDado2: \n");
+        //printf("\nDado2: \n");
         escolhaPeaoVermelhoDado2(jogo2x2, &inicio);
     }
 
@@ -346,7 +346,7 @@ int escolhaPeaoVermelhoDado1(jogo *jogo2x2, int *inicio) // colocar no V3
         jogo2x2[0].percurso[1][0] = 1; // saiu da origem
         printf("Peao2-Vermelho saiu da origem! \n");
 
-        printf("\nDado2: \n");
+       // printf("\nDado2: \n");
         escolhaPeaoVermelhoDado2(jogo2x2, &inicio);
     }
 
@@ -356,7 +356,7 @@ int escolhaPeaoVermelhoDado1(jogo *jogo2x2, int *inicio) // colocar no V3
         jogo2x2[0].percurso[2][0] = 1; // saiu da origem
         printf("Peao3-Vermelho saiu da origem! \n");
 
-        printf("\nDado2: \n");
+       // printf("\nDado2: \n");
         escolhaPeaoVermelhoDado2(jogo2x2, &inicio);
     }
 
@@ -366,7 +366,7 @@ int escolhaPeaoVermelhoDado1(jogo *jogo2x2, int *inicio) // colocar no V3
         jogo2x2[0].percurso[3][0] = 1; // saiu da origem
         printf("Peao4-Vermelho saiu da origem! \n");
 
-        printf("\nDado2: \n");
+        //printf("\nDado2: \n");
         escolhaPeaoVermelhoDado2(jogo2x2, &inicio);
     }
 }
@@ -383,7 +383,7 @@ int escolhaPeaoVermelhoDado2(jogo *jogo2x2, int *inicio) // colocar no V3
         jogo2x2[0].percurso[0][1] += jogo2x2[0].jogador;
         printf("Peao1-Vermelho esta na casa %d do percurso! \n", jogo2x2[0].percurso[0][1]);
 
-        printf("\nDado3: \n");
+        //printf("\nDado3: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, &inicio);
     }
 
@@ -393,7 +393,7 @@ int escolhaPeaoVermelhoDado2(jogo *jogo2x2, int *inicio) // colocar no V3
         jogo2x2[0].percurso[1][1] += jogo2x2[0].jogador;
         printf("Peao2-Vermelho esta na casa %d do percurso! \n", jogo2x2[0].percurso[1][1]);
 
-        printf("\nDado3: \n");
+       // printf("\nDado3: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, &inicio);
     }
 
@@ -403,7 +403,7 @@ int escolhaPeaoVermelhoDado2(jogo *jogo2x2, int *inicio) // colocar no V3
         jogo2x2[0].percurso[2][1] += jogo2x2[0].jogador;
         printf("Peao3-Vermelho esta na casa %d do percurso! \n", jogo2x2[0].percurso[2][1]);
 
-        printf("\nDado3: \n");
+        //printf("\nDado3: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, &inicio);
     }
 
@@ -413,7 +413,7 @@ int escolhaPeaoVermelhoDado2(jogo *jogo2x2, int *inicio) // colocar no V3
         jogo2x2[0].percurso[3][1] += jogo2x2[0].jogador;
         printf("Peao4-Vermelho esta na casa %d do percurso! \n", jogo2x2[0].percurso[3][1]);
 
-        printf("\nDado3: \n");
+        //printf("\nDado3: \n");
         escolhaPeaoVermelhoDado3(jogo2x2, &inicio);
     }
 }
@@ -473,7 +473,7 @@ int escolhaPeaoAmareloDado1(jogo *jogo2x2, int *inicio)
 
         printf("Peao1-Amarelo saiu da origem! \n");
 
-        printf("\nDado2: \n");
+        //printf("\nDado2: \n");
         escolhaPeaoAmareloDado2(jogo2x2, &inicio);
     }
 
@@ -482,7 +482,7 @@ int escolhaPeaoAmareloDado1(jogo *jogo2x2, int *inicio)
 
         printf("Peao2-Amarelo saiu da origem! \n");
 
-        printf("\nDado2: \n");
+       // printf("\nDado2: \n");
         escolhaPeaoAmareloDado2(jogo2x2, &inicio);
     }
 
@@ -491,7 +491,7 @@ int escolhaPeaoAmareloDado1(jogo *jogo2x2, int *inicio)
 
         printf("Peao3-Amarelo saiu da origem! \n");
 
-        printf("\nDado2: \n");
+       // printf("\nDado2: \n");
         escolhaPeaoAmareloDado2(jogo2x2, &inicio);
     }
 
@@ -500,7 +500,7 @@ int escolhaPeaoAmareloDado1(jogo *jogo2x2, int *inicio)
 
         printf("Peao4-Amarelo saiu da origem! \n");
 
-        printf("\nDado2: \n");
+        //printf("\nDado2: \n");
         escolhaPeaoAmareloDado2(jogo2x2, &inicio);
     }
 }
@@ -517,7 +517,7 @@ int escolhaPeaoAmareloDado2(jogo *jogo2x2, int *inicio)
         jogo2x2[1].percurso[0][1] += jogo2x2[1].jogador;
         printf("Peao1-Amarelo esta na casa %d do percurso! \n", jogo2x2[1].percurso[0][1]);
 
-        printf("\nDado2: \n");
+        //printf("\nDado2: \n");
         escolhaPeaoAmareloDado3(jogo2x2, &inicio);
     }
 
@@ -527,7 +527,7 @@ int escolhaPeaoAmareloDado2(jogo *jogo2x2, int *inicio)
         jogo2x2[1].percurso[1][1] += jogo2x2[1].jogador;
         printf("Peao2-Amarelo esta na casa %d do percurso! \n", jogo2x2[1].percurso[1][1]);
 
-        printf("\nDado2: \n");
+        //printf("\nDado2: \n");
         escolhaPeaoAmareloDado3(jogo2x2, &inicio);
     }
 
@@ -538,7 +538,7 @@ int escolhaPeaoAmareloDado2(jogo *jogo2x2, int *inicio)
 
         printf("Peao3-Amarelo esta na casa %d do percurso! \n", jogo2x2[1].percurso[2][1]);
 
-        printf("\nDado2: \n");
+       // printf("\nDado2: \n");
         escolhaPeaoAmareloDado3(jogo2x2, &inicio);
     }
 
@@ -549,7 +549,7 @@ int escolhaPeaoAmareloDado2(jogo *jogo2x2, int *inicio)
 
         printf("Peao4-Amarelo esta na casa %d do percurso! \n", jogo2x2[1].percurso[3][1]);
 
-        printf("\nDado2: \n");
+        //printf("\nDado2: \n");
         escolhaPeaoAmareloDado3(jogo2x2, &inicio);
     }
 }
