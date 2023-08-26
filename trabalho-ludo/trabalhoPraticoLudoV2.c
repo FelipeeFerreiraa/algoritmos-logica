@@ -44,15 +44,15 @@ int main()
     jogo2x2[1].percurso[2][0] = 0; // origem jogador 2
     jogo2x2[1].percurso[3][0] = 0; // origem jogador 2
 
-    jogo2x2[0].percurso[0][1] = 0; // primeira posicao do percurso
-    jogo2x2[0].percurso[1][1] = 0; // primeira posicao do percurso
-    jogo2x2[0].percurso[2][1] = 0; // primeira posicao do percurso
-    jogo2x2[0].percurso[3][1] = 0; // primeira posicao do percurso
+    jogo2x2[0].percurso[0][1] = 0; 
+    jogo2x2[0].percurso[1][1] = 0;
+    jogo2x2[0].percurso[2][1] = 0; 
+    jogo2x2[0].percurso[3][1] = 0;
 
-    jogo2x2[1].percurso[0][1] = 0; // primeira posicao do percurso
-    jogo2x2[1].percurso[1][1] = 0; // primeira posicao do percurso
-    jogo2x2[1].percurso[2][1] = 0; // primeira posicao do percurso
-    jogo2x2[1].percurso[3][1] = 0; // primeira posicao do percurso
+    jogo2x2[1].percurso[0][1] = 0; 
+    jogo2x2[1].percurso[1][1] = 0;
+    jogo2x2[1].percurso[2][1] = 0; 
+    jogo2x2[1].percurso[3][1] = 0; 
 
     inicio2x2(jogo2x2, 2, &inicio);
 
